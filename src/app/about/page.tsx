@@ -1,6 +1,6 @@
 const page = () => {
   return (
-    <div>About</div>
+    <div className="p-8">About</div>
   );
 };
 

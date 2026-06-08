@@ -2,7 +2,8 @@
 /* authPrimary: '#f5c68d',
 lighterSecondary: '#cacbe6', */
 :root {
-  --background: #FDF8EB;
+  /* --background: #FDF8EB; */
+  --background: #fdf0dc;
   --foreground: #8283b3;
   --authPrimary: #f5c68d;
   --lighterSecondary: #cacbe6;
@@ -19,7 +20,7 @@ lighterSecondary: '#cacbe6', */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #FDF8EB;
+    --background: #fdf0dc;
     --foreground: #8283b3;
     --authPrimary: #f5c68d;
     --lighterSecondary: #cacbe6;
