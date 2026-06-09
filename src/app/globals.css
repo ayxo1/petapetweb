@@ -1,12 +1,11 @@
 @import "tailwindcss";
-/* authPrimary: '#f5c68d',
-lighterSecondary: '#cacbe6', */
+
 :root {
-  /* --background: #FDF8EB; */
   --background: #fdf0dc;
   --foreground: #8283b3;
   --authPrimary: #f5c68d;
   --lighterSecondary: #cacbe6;
+  --tabFont: #615850;
 }
 
 @theme inline {
@@ -14,6 +13,7 @@ lighterSecondary: '#cacbe6', */
   --color-foreground: var(--foreground);
   --color-authPrimary: var(--authPrimary);
   --color-lighterSecondary: var(--lighterSecondary);
+  --color-tabFont: var(--tabFont);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -24,7 +24,7 @@ lighterSecondary: '#cacbe6', */
     --foreground: #8283b3;
     --authPrimary: #f5c68d;
     --lighterSecondary: #cacbe6;
-    /* --foreground: #8283b3; */
+    --tabFont: #615850;
   }
 }
 

@@ -1,12 +1,10 @@
-import exploreIconTest from '../../public/icons/exploreIconTest.png';
 import iconHeart from '../../public/icons/iconHeart.png';
-import glow from '../../public/icons/glow.png';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const NavBar = () => {
   return (
-    <nav className='p-4 sticky top-0 bg-background'>
+    <nav className='p-4 sticky top-0 bg-background z-50'>
       <div className='flex justify-between px-48 w-full'>
 
         <div className='flex flex-row gap-6'>
