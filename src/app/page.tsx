@@ -2,16 +2,16 @@ import Image from "next/image";
 import AppStoreBadgeBlk from "../../public/AppStoreBadgeBlk.svg";
 import LottieComponent from "@/components/LottieComponent";
 import Link from "next/link";
-import AppRender from "@/components/AppRender";
+import Herosection from "@/components/Herosection";
 
 export default function Home() {
 
   return (
     <div>
       <main>
-        <AppRender />
+        <Herosection />
 
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex items-center justify-center">
             <div>
               <LottieComponent />
@@ -24,7 +24,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center gap-2">
+          <div className="flex flex-col items-center justify-center">
             <Image
               src={AppStoreBadgeBlk}
               alt="app icon"
