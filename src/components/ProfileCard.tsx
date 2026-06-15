@@ -20,7 +20,7 @@ const ProfileCard = ({ id, imageSrc, children }: ProfileCardData) => {
         priority
       />
       <div
-        className="absolute inset-0 bg-linear-to-t from-foreground to-background p-4 -z-10"
+        className="absolute inset-0 bg-linear-to-t from-background to-foreground p-4 -z-10"
       >
         {/* <p className="text-center mt-2">{activeBtn}</p> */}
         {/* {children} */}

@@ -1,14 +1,12 @@
 'use client';
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import CardDeck from "./CardDeck";
 import Image from "next/image";
-import phoneFrame from "../../public/images/phoneFrame.png";
 import phoneFrameNoBg from "../../public/images/phoneFrameNoBg.png";
 import TabBar from "./TabBar";
 
-const Herosection = () => {
+const Herosection = ({ isDeckRendered, setIsDeckRendered }: { isDeckRendered: boolean; setIsDeckRendered: Dispatch<SetStateAction<boolean>> }) => {
 
-    const [isDeckRendered, setIsDeckRendered] = useState(false);
     const [activeBtn, setActiveBtn] = useState('profile');
 
   return (
@@ -52,7 +50,7 @@ const Herosection = () => {
                 </div>
             </div>
             
-            <div className="absolute inset-x-0 -bottom-25 z-30 h-[20%] flex items-center justify-center">
+            <div className="absolute inset-x-0 -bottom-23 z-30 h-[clamp(4vw,50vw,120px)] flex items-center justify-center">
                 <TabBar 
                     activeBtn={activeBtn}
                     setActiveBtn={setActiveBtn}

@@ -17,14 +17,6 @@ const NavBar = () => {
               height={100}
               priority
             />
-            {/* <Image
-              className="absolute -top-1 left-[13.15rem] h-3 opacity-0 w-6 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 peer-hover:scale-105 peer-hover:opacity-100"
-              src={glow}
-              alt="glow icon"
-              width={5}
-              height={5}
-              priority
-            /> */}
             <p className='absolute top-10 left-51 text-sm text-foreground opacity-0 transition delay-150 duration-300 ease-in-out peer-hover:opacity-100'>home</p>
           </Link>
         </div>
@@ -32,18 +24,18 @@ const NavBar = () => {
         <div className='flex fle-row gap-6 items-center text-lg'>
           <Link 
             href={'/about'} 
-            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background'
+            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg'
           >
             about
           </Link>
           <Link 
-            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background'
+            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg text-center'
             href={'/privacy'}
           >
             privacy policy
           </Link>
           <Link
-            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background'
+            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg text-center'
             href={'/terms'}
           >
             terms of service

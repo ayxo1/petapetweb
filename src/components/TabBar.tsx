@@ -37,14 +37,14 @@ const iconList = [
 const TabBar = ({ activeBtn, setActiveBtn, isDeckRendered }: { activeBtn: string; setActiveBtn: Dispatch<SetStateAction<string>>; isDeckRendered: boolean; }) => {
 
   return (
-    <div className='flex gap-3.5 items-center justify-center'>
+    <div className='flex gap-3 items-center justify-center'>
     {iconList.map((icon, i) => (
         <button
             key={icon.iconName} 
             className={`flex flex-col items-center justify-center overflow-hidden gap-0.5 transition-opacity ease-in duration-300 ${!isDeckRendered ? 'opacity-0' : 'opacity-100'}`}
             onClick={() => setActiveBtn(icon.iconName)}
             style={{
-                transitionDelay: isDeckRendered ? `${i * 100}ms` : '0ms',
+                transitionDelay: isDeckRendered ? `${i * 120}ms` : '0ms',
             }}
         >
             <TabIcon
@@ -52,7 +52,7 @@ const TabBar = ({ activeBtn, setActiveBtn, isDeckRendered }: { activeBtn: string
                 iconName={icon.iconName}
                 activeBtn={activeBtn}
             />
-            <span className={`text-[clamp(9px,0.85vw,12px)] ${activeBtn === icon.iconName ? 'text-foreground' : 'text-tabFont'}`}>{icon.iconName}</span>
+            <span className={`text-[clamp(10px,0.85vw,12px)] ${activeBtn === icon.iconName ? 'text-foreground' : 'text-tabFont'}`}>{icon.iconName}</span>
         </button>
     ))}
     </div>
