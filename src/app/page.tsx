@@ -19,11 +19,11 @@ export default function Home() {
         setIsDeckRendered={setIsDeckRendered}
       />
 
-      <div
+      <aside
         onTransitionEnd={() => {
           if (isDeckRendered) setIntroTransitionDone(true);
         }}
-        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[1%] lg:right-[3%] 2xl:right-[5%] 
+        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[0.5%] lg:right-[3%] 2xl:right-[5%] 
         ${
           introTransitionDone
             ? ''
@@ -32,7 +32,7 @@ export default function Home() {
         ${
           !isDeckRendered
           ? 'opacity-0 top-[10%] md:top-[5%]' 
-          : 'opacity-100 2xl:top-[28%] lg:top-[8%] md:top-[12%]'
+          : 'opacity-100 2xl:top-[28%] lg:top-[8%] md:top-[10%]'
         }`}
       >
         
@@ -68,11 +68,28 @@ export default function Home() {
             
           </div>
           
-
         </div>
 
+      </aside>
 
-      </div>
+      <aside
+      onTransitionEnd={() => {
+          if (isDeckRendered) setIntroTransitionDone(true);
+        }}
+        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:left-[0.5%] lg:left-[3%] 2xl:left-[5%] 
+        ${
+          introTransitionDone
+            ? ''
+            : 'transition-[opacity,top] delay-500 duration-600 ease-in-out'
+        } 
+        ${
+          !isDeckRendered
+          ? 'opacity-0 top-[10%] md:top-[5%]' 
+          : 'opacity-100 2xl:top-[28%] lg:top-[8%] md:top-[10%]'
+        }`}
+      >
+        <p></p>
+      </aside>
 
     </main>
   );

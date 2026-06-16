@@ -18,6 +18,7 @@ const ProfileCard = ({ id, imageSrc, children }: ProfileCardData) => {
         src={borderCompressed}
         alt="profile border"
         priority
+        draggable={false}
       />
       <div
         className="absolute inset-0 bg-linear-to-t from-background to-foreground p-4 -z-10"

@@ -38,25 +38,23 @@ const CardCarousel = ({ cards, skipMorph }: CardCarouselProps) => {
         },
     }));
  
-  // Trigger the morph on mount (if not skipping).
     useEffect(() => {
-    if (!skipMorph) {
-        // Small initial delay so the component is fully painted before animating.
-        const timer = setTimeout(() => {
-        morphApi.start({
-            width: PHONE_W,
-            height: PHONE_H,
-            borderRadius: PHONE_RADIUS,
-        });
-        }, 50);
-        return () => clearTimeout(timer);
-    }
+        if (!skipMorph) {
+            const timer = setTimeout(() => {
+            morphApi.start({
+                width: PHONE_W,
+                height: PHONE_H,
+                borderRadius: PHONE_RADIUS,
+            });
+            }, 50);
+            return () => clearTimeout(timer);
+        }
     }, [morphApi, skipMorph]);
 
     const [cardSprings, cardApi] = useSprings(cards.length, (i) => ({
         x: 0,
         scale: 1,
-        opacity: i >= activeIndex - 1 ? 1 : 0, // only render top 2 cards
+        opacity: i >= activeIndex - 1 ? 1 : 0,
         config: config.default,
     }));
 
@@ -119,25 +117,22 @@ const CardCarousel = ({ cards, skipMorph }: CardCarouselProps) => {
             {cardSprings.map((spring, i) => (
                 <animated.div
                     key={cards[i].id}
+                    {...bind(i)}
                     style={{
                         position: 'absolute',
                         inset: 0,
-                        zIndex: i,
+                        zIndex: i === activeIndex ? 10 : i,
+                        pointerEvents: i === activeIndex ? 'auto' : 'none',
                         x: spring.x,
                         scale: spring.scale,
                         opacity: spring.opacity,
                         touchAction: 'none',
-                        cursor: morphDone && i === activeIndex ? "grab" : "default",
                     }}
-                    {...(morphDone ? bind(i) : {})}
                 >
                     <ProfileCard
                         id={cards[i].id}
 
                     >
-                        {/* <div className="absolute top-0 bg-linear-to-t from-foreground/50 to-transparent p-4 -z-50 rounded-xl h-144 w-full">
-                            <p className="text-center mt-2">swipe</p>
-                        </div> */}
                         <></>
                     </ProfileCard>
                 </animated.div>

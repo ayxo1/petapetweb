@@ -1,5 +1,4 @@
 'use client';
-import logoAnimation from "../../public/animations/splashScreenAnim.json";
 import noBgAnim from "../../public/animations/noBgAnim.json";
 import Lottie from 'lottie-react';
 
