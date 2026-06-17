@@ -1,53 +1,49 @@
 'use client';
 import { Dispatch, SetStateAction, useState } from "react";
 import CardDeck from "./CardDeck";
-import Image from "next/image";
-import phoneFrameNoBg from "../../public/images/phoneFrameNoBg.png";
 import TabBar from "./TabBar";
 
 const cards = [
     {
         id: 0,
-        children: <p>1</p>
+        children: <p>profile</p>,
+        name: 'profile'
     },
     {
         id: 1,
-        children: <p>2</p>
+        children: <p>likes</p>,
+        name: 'likes'
     },
     {
         id: 2,
-        children: <p>3</p>
+        children: <p>explore</p>,
+        name: 'explore'
     },
     {
         id: 3,
-        children: <p>4</p>
+        children: <p>events</p>,
+        name: 'events'
     },
     {
         id: 4,
-        children: <p>4</p>
+        children: <p>connect</p>,
+        name: 'connect'
     },
     {
         id: 5,
-        children: <p>4</p>
+        children: <p>rescue</p>,
+        name: 'rescue'
     },
 ];
 
 const Herosection = ({ isDeckRendered, setIsDeckRendered }: { isDeckRendered: boolean; setIsDeckRendered: Dispatch<SetStateAction<boolean>> }) => {
 
-    const [activeBtn, setActiveBtn] = useState('profile');
     const [isIntroDone, setIsIntroDone] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(cards.length - 1);
-
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeBtn = cards[activeIndex].name;
+    
   return (
     <section className="relative isolate mx-auto aspect-2/3 w-[clamp(440px,42vw,550px)]">
-        
-        {/* <Image
-            className={`z-30 object-contain scale-110 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isDeckRendered ? 'opacity-0' : 'opacity-100'}`}
-            src={phoneFrameNoBg}
-            alt="phone frame image"
-            priority
-            fill
-        /> */}
 
         <div
             className="absolute left-[19%] top-[8%] h-[76%] w-[62%] z-20"
@@ -69,8 +65,9 @@ const Herosection = ({ isDeckRendered, setIsDeckRendered }: { isDeckRendered: bo
             <div className="absolute inset-x-0 -bottom-23 z-10 h-[clamp(4vw,50vw,120px)] flex items-center justify-center">
                 <TabBar 
                     activeBtn={activeBtn}
-                    setActiveBtn={setActiveBtn}
+                    // setActiveBtn={setActiveBtn}
                     isDeckRendered={isDeckRendered}
+                    setActiveIndex={setActiveIndex}
                 />
             </div>
 

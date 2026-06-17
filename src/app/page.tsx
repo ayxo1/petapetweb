@@ -14,6 +14,30 @@ export default function Home() {
   return (
     <main className="relative max-w-full flex flex-col items-center">
 
+      <aside
+        onTransitionEnd={() => {
+            if (isDeckRendered) setIntroTransitionDone(true);
+          }}
+          className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:left-[3%] lg:left-[6%] 2xl:left-[15%] 
+          ${
+            introTransitionDone
+              ? ''
+              : 'transition-[opacity,top] delay-500 duration-600 ease-in-out'
+          }
+          ${
+            !isDeckRendered
+            ? 'opacity-0 top-[30%] md:top-[25%]'
+            : 'opacity-100 2xl:top-[40%] md:top-[40%]'
+          } mb-4 md:mb-0`
+        }
+      >
+
+        <div className="z-10">
+          <h1 className="lg:text-xl mb-4 text-center font-bold text-tabFont">swipe the cards to learn more :)</h1>
+        </div>
+
+      </aside>
+      
       <Herosection 
         isDeckRendered={isDeckRendered}
         setIsDeckRendered={setIsDeckRendered}
@@ -23,7 +47,7 @@ export default function Home() {
         onTransitionEnd={() => {
           if (isDeckRendered) setIntroTransitionDone(true);
         }}
-        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[0.5%] lg:right-[3%] 2xl:right-[5%] 
+        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[0.5%] lg:right-[3%] 2xl:right-[6%] 
         ${
           introTransitionDone
             ? ''
@@ -70,25 +94,6 @@ export default function Home() {
           
         </div>
 
-      </aside>
-
-      <aside
-      onTransitionEnd={() => {
-          if (isDeckRendered) setIntroTransitionDone(true);
-        }}
-        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:left-[0.5%] lg:left-[3%] 2xl:left-[5%] 
-        ${
-          introTransitionDone
-            ? ''
-            : 'transition-[opacity,top] delay-500 duration-600 ease-in-out'
-        } 
-        ${
-          !isDeckRendered
-          ? 'opacity-0 top-[10%] md:top-[5%]' 
-          : 'opacity-100 2xl:top-[28%] lg:top-[8%] md:top-[10%]'
-        }`}
-      >
-        <p></p>
       </aside>
 
     </main>

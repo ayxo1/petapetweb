@@ -9,40 +9,52 @@ import TabIcon from './TabIcon';
 
 const iconList = [
     {
+        id: 0,
         icon: profileIcon,
         iconName: 'profile'
     },
     {
+        id: 1,
         icon: likesIcon,
         iconName: 'likes'
     },
     {
+        id: 2,
         icon: exploreIcon,
         iconName: 'explore'
     },
     {
+        id: 3,
         icon: eventsIcon,
         iconName: 'events'
     },
     {
+        id: 4,
         icon: connectIcon,
         iconName: 'connect'
     },
     {
+        id: 5,
         icon: rescueIcon,
         iconName: 'rescue'
     }
 ];
 
-const TabBar = ({ activeBtn, setActiveBtn, isDeckRendered }: { activeBtn: string; setActiveBtn: Dispatch<SetStateAction<string>>; isDeckRendered: boolean; }) => {
+const TabBar = ({ activeBtn, setActiveBtn, isDeckRendered, setActiveIndex }: 
+    { 
+        activeBtn: string; 
+        setActiveBtn?: Dispatch<SetStateAction<string>>; 
+        isDeckRendered: boolean; 
+        setActiveIndex: Dispatch<SetStateAction<number>>; 
+    }) => {
 
   return (
     <div className='flex gap-3 items-center justify-center'>
     {iconList.map((icon, i) => (
         <button
             key={icon.iconName} 
-            className={`flex flex-col items-center justify-center overflow-hidden gap-0.5 transition-opacity ease-in duration-300 ${!isDeckRendered ? 'opacity-0' : 'opacity-100'}`}
-            onClick={() => setActiveBtn(icon.iconName)}
+            className={`flex flex-col items-center justify-center overflow-hidden gap-0.5 transition-opacity ease-in duration-300 ${!isDeckRendered ? 'opacity-0' : 'opacity-100'} cursor-pointer`}
+            onClick={() => setActiveIndex(icon.id)}
             style={{
                 transitionDelay: isDeckRendered ? `${i * 120}ms` : '0ms',
             }}

@@ -1,11 +1,11 @@
 'use client';
 import { config, useSprings, animated } from "@react-spring/web";
 import ProfileCard, { ProfileCardData } from "./ProfileCard";
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { useDrag } from "@use-gesture/react";
 import Image from "next/image";
 import phoneFrameNoBg from "../../public/images/phoneFrameNoBg.png";
-
+import { checkMobile } from "@/app/utils/handleMobile";
 
 
 type CardDeckProps = {
@@ -22,28 +22,9 @@ const stableRotation = (seed: number) => {
   return -8 + (x - Math.floor(x)) * 10;
 };
 
-const getSpringProps = (i: number, activeIndex: number) => ({
-    from: {
-        x: 0,
-        y: -900,
-        opacity: 0.5,
-        rotate: [-6, 4, -2, 7][i % 4],
-        scale: 0.9
-    },
-    to: {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        rotate: i !== activeIndex ? stableRotation(i) : 0,
-        scale: 1
-    },
-    delay: i * 250,
-    config: config.slow
-});
-
 const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone, setIsIntroDone }: CardDeckProps) => {
-
     const completedRef = useRef(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const [cardSprings, cardApi] = useSprings(cards.length, (i) => ({
           from: {
@@ -84,22 +65,24 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
             if (i !== index) return;
 
             if (committed) {
-            return {
-                x: dx > 0 ? 500 : -500,
-                scale: 1,
-                config: { tension: 200, friction: 30 },
-            };
+                return {
+                    x: dx > 0 ? 500 : -500,
+                    // x: -500,
+                    scale: 1,
+                    opacity: 0,
+                    config: { tension: 200, friction: 30 },
+                };
             }
 
             return {
-            x: active ? mx : 0,
-            scale: active ? 0.97 : 1,
-            config: active ? { tension: 800, friction: 30 } : config.stiff,
+                x: active ? mx : 0,
+                scale: active ? 0.97 : 1,
+                config: active ? { tension: 800, friction: 30 } : config.stiff,
             };
         });
 
         if (committed) {
-            setActiveIndex((prev) => Math.max(prev - 1, 0));
+            setActiveIndex((prev) => Math.min(prev + 1, (cards.length - 1)));
         }
     });
 
@@ -112,20 +95,27 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
         });
 
     }, [activeIndex, isIntroDone, cardApi]);
-    
+
+    useEffect(() => {
+        const handleIsMobile = async () => {
+            const isOnMobile = await checkMobile();
+            setIsMobile(isOnMobile);
+        };
+        handleIsMobile();
+    }, []);
 
   return (
     <div
         className="relative w-full h-full flex justify-center"
     >
 
-        <Image
+        {!isMobile && <Image
             className={`pt-9 z-10 object-contain scale-177 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone ? 'opacity-0' : 'opacity-100'}`}
             src={phoneFrameNoBg}
             alt="phone frame image"
             priority
             fill
-        />
+        />}
 
         <div className="relative h-full w-full">
             {cardSprings.map((spring, i) => (
@@ -149,7 +139,7 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
                     <ProfileCard 
                         id={cards[i].id}
                     >
-                        <></>
+                        {cards[i].children}
                     </ProfileCard>
                 </animated.div>
             ))}
