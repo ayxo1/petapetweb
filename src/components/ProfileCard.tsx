@@ -1,15 +1,16 @@
 'use client';
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { JSX } from "react/jsx-runtime";
 import borderCompressed from "../../public/images/borderCompressed.png";
 
 export type ProfileCardData = {
   id: number;
-  imageSrc?: string;
+  imageSrc?: StaticImageData;
   children: JSX.Element;
+  bg?: string;
 };
 
-const ProfileCard = ({ id, imageSrc, children }: ProfileCardData) => {
+const ProfileCard = ({ children, imageSrc, bg = 'bg-linear-to-t from-background to-foreground' }: ProfileCardData) => {
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-xl shadow-xl">
@@ -21,11 +22,17 @@ const ProfileCard = ({ id, imageSrc, children }: ProfileCardData) => {
         draggable={false}
       />
       <div
-        className="absolute inset-0 bg-linear-to-t from-background to-foreground p-4 -z-10"
+        className='absolute inset-0 p-4 -z-10'
       >
-        {/* <p className="text-center mt-2">{activeBtn}</p> */}
-        {children}
-        {/* <p>yes</p> */}
+        {imageSrc && <Image
+          className="h-full w-full scale-y-104 scale-x-108"
+          src={imageSrc}
+          alt=''
+          priority
+          draggable={false}
+          // fill
+        />}
+        {/* {children} */}
       </div>
     </div>
   );

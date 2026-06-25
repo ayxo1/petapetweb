@@ -2,37 +2,49 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import CardDeck from "./CardDeck";
 import TabBar from "./TabBar";
+import mlmp from '../../public/images/mlmp.jpg';
+import profileTypes from '../../public/images/profileTypes.jpg';
+import exploreDesc from '../../public/images/exploreDesc.jpg';
+import connectDesc from '../../public/images/connectDesc.jpg';
+import eventsDesc from '../../public/images/eventsDesc.jpg';
+import rescueDesc from '../../public/images/rescueDesc.jpg';
 
 const cards = [
     {
         id: 0,
         children: <p>profile</p>,
-        name: 'profile'
+        name: 'profile',
+        imageSrc: mlmp,
     },
     {
         id: 1,
         children: <p>likes</p>,
-        name: 'likes'
+        name: 'likes',
+        imageSrc: profileTypes,
     },
     {
         id: 2,
         children: <p>explore</p>,
-        name: 'explore'
+        name: 'explore',
+        imageSrc: exploreDesc
     },
     {
         id: 3,
         children: <p>events</p>,
-        name: 'events'
+        name: 'events',
+        imageSrc: eventsDesc
     },
     {
         id: 4,
         children: <p>connect</p>,
-        name: 'connect'
+        name: 'connect',
+        imageSrc: connectDesc
     },
     {
         id: 5,
         children: <p>rescue</p>,
-        name: 'rescue'
+        name: 'rescue',
+        imageSrc: rescueDesc
     },
 ];
 
@@ -62,10 +74,9 @@ const Herosection = ({ isDeckRendered, setIsDeckRendered }: { isDeckRendered: bo
                 </div>
             </div>
             
-            <div className="absolute inset-x-0 -bottom-23 z-10 h-[clamp(4vw,50vw,120px)] flex items-center justify-center">
+            <div className="absolute inset-x-0 bottom-[-18.5%] z-10 h-[clamp(4vw,50vw,120px)] flex items-center justify-center pt-4 lg:pt-0">
                 <TabBar 
                     activeBtn={activeBtn}
-                    // setActiveBtn={setActiveBtn}
                     isDeckRendered={isDeckRendered}
                     setActiveIndex={setActiveIndex}
                 />

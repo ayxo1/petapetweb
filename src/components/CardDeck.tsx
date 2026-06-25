@@ -4,7 +4,8 @@ import ProfileCard, { ProfileCardData } from "./ProfileCard";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { useDrag } from "@use-gesture/react";
 import Image from "next/image";
-import phoneFrameNoBg from "../../public/images/phoneFrameNoBg.png";
+// import phoneFrameNoBg from "../../public/images/phoneFrameNoBg.png";
+import phoneFrame2 from "../../public/images/phoneFrame2.png";
 import { checkMobile } from "@/app/utils/handleMobile";
 
 
@@ -23,11 +24,12 @@ const stableRotation = (seed: number) => {
 };
 
 const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone, setIsIntroDone }: CardDeckProps) => {
-    const completedRef = useRef(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const completedAnimRef = useRef(false);
+    const goneCardsRef = useRef(new Set<number>());
 
+    const [isMobile, setIsMobile] = useState(false);
     const [cardSprings, cardApi] = useSprings(cards.length, (i) => ({
-          from: {
+        from: {
             x: 0,
             y: -900,
             opacity: 0.5,
@@ -45,14 +47,14 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
         config: config.slow,
         onRest:
             i === cards.length - 1
-            ? () => {
-                if (!completedRef.current) {
-                    completedRef.current = true;
-                    setIsIntroDone(true);
-                    onComplete();
-                }
-                }
-            : undefined,
+                ? () => {
+                    if (!completedAnimRef.current) {
+                        completedAnimRef.current = true;
+                        setIsIntroDone(true);
+                        onComplete();
+                    }
+                    }
+                : undefined,
     }));
 
     const bind = useDrag(({ args: [index], active, movement: [mx], velocity: [vx], direction: [dx] }) => {
@@ -66,8 +68,7 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
 
             if (committed) {
                 return {
-                    x: dx > 0 ? 500 : -500,
-                    // x: -500,
+                    x: dx > 0 ? 400 : -400,
                     scale: 1,
                     opacity: 0,
                     config: { tension: 200, friction: 30 },
@@ -82,7 +83,19 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
         });
 
         if (committed) {
-            setActiveIndex((prev) => Math.min(prev + 1, (cards.length - 1)));
+            goneCardsRef.current.add(index);
+            setActiveIndex(() => {
+                for (let i = index + 1; i < cards.length; i++) {
+                    if (!goneCardsRef.current.has(i)) return i;
+                }
+
+                for (let i = index - 1; i >= 0; i--) {
+                    if (!goneCardsRef.current.has(i)) return i;
+                }
+
+                return index;
+            });
+
         }
     });
 
@@ -104,28 +117,45 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
         handleIsMobile();
     }, []);
 
+    useEffect(() => {
+        if (cardSprings[activeIndex].x.get() !== 0) {
+            cardSprings[activeIndex].x.set(0);
+            cardSprings[activeIndex].opacity.set(1);
+            goneCardsRef.current.delete(activeIndex);
+        }
+    }, [activeIndex, cardSprings]);
+
   return (
     <div
         className="relative w-full h-full flex justify-center"
     >
 
         {!isMobile && <Image
-            className={`pt-9 z-10 object-contain scale-177 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone ? 'opacity-0' : 'opacity-100'}`}
-            src={phoneFrameNoBg}
+            // className={`pt-9 z-10 object-contain scale-177 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone ? 'opacity-0' : 'opacity-100'}`}
+            className={`pt-9 z-10 object-contain scale-140 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone ? 'opacity-0' : 'opacity-100'}`}
+            src={phoneFrame2}
             alt="phone frame image"
             priority
             fill
         />}
 
         <div className="relative h-full w-full">
-            {cardSprings.map((spring, i) => (
+            {cardSprings.map((spring, i) => {
+                const nonActiveIndex = 
+                    spring.x.get() === -400 || 
+                    spring.x.get() === 0 ||
+                    spring.x.get() === 400
+                        ? 9 - i 
+                        : 10
+                return (
                 <animated.div
                     key={cards[i].id}
                     {...bind(i)}
+                    className=' scale-y-109 scale-x-98'
                     style={{
                         position: 'absolute',
                         inset: 0,
-                        zIndex: i === activeIndex ? 10 : i,
+                        zIndex: i === activeIndex ? 10 : nonActiveIndex,
                         pointerEvents: isIntroDone && i === activeIndex ? 'auto' : 'none',
                         x: spring.x,
                         y: spring.y,
@@ -136,13 +166,34 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
                         cursor: isIntroDone && i === activeIndex ? 'grab' : 'default',
                     }}
                 >
-                    <ProfileCard 
+                    <ProfileCard
                         id={cards[i].id}
+                        imageSrc={cards[i].imageSrc}
+                        bg={cards[i].bg}
                     >
                         {cards[i].children}
                     </ProfileCard>
                 </animated.div>
-            ))}
+                )
+            })}
+            {isIntroDone && <button 
+                className="absolute top-1/2 right-1/2 z-0 items-center translate-x-1/2 -translate-y-1/2 bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-center"
+                onClick={() => {
+                    cardSprings.map((_, i) => {
+                        cardApi.start(() => ({
+                            x: 0,
+                            y: 0,
+                            opacity: 1,
+                            rotate: stableRotation(i),
+                            scale: 1,
+                        }))
+                    })
+                    setActiveIndex(0);
+                    goneCardsRef.current.clear();
+                }}
+            >
+                reset the cards
+            </button>}
         </div>
 
     </div>

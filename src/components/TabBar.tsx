@@ -40,16 +40,15 @@ const iconList = [
     }
 ];
 
-const TabBar = ({ activeBtn, setActiveBtn, isDeckRendered, setActiveIndex }: 
+const TabBar = ({ activeBtn, isDeckRendered, setActiveIndex }: 
     { 
         activeBtn: string; 
-        setActiveBtn?: Dispatch<SetStateAction<string>>; 
         isDeckRendered: boolean; 
         setActiveIndex: Dispatch<SetStateAction<number>>; 
     }) => {
 
   return (
-    <div className='flex gap-3 items-center justify-center'>
+    <div className='flex gap-2.5 items-center justify-center'>
     {iconList.map((icon, i) => (
         <button
             key={icon.iconName} 

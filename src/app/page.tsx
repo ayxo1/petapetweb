@@ -18,7 +18,7 @@ export default function Home() {
         onTransitionEnd={() => {
             if (isDeckRendered) setIntroTransitionDone(true);
           }}
-          className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:left-[3%] lg:left-[6%] 2xl:left-[15%] 
+          className={`relative flex flex-col w-fit max-w-[calc(30vw-2rem)] md:absolute md:left-[4%] lg:left-[6%] 2xl:left-[15%] 
           ${
             introTransitionDone
               ? ''
@@ -28,12 +28,12 @@ export default function Home() {
             !isDeckRendered
             ? 'opacity-0 top-[30%] md:top-[25%]'
             : 'opacity-100 2xl:top-[40%] md:top-[40%]'
-          } mb-4 md:mb-0`
+          }`
         }
       >
 
-        <div className="z-10">
-          <h1 className="lg:text-xl mb-4 text-center font-bold text-tabFont">swipe the cards to learn more :)</h1>
+        <div>
+          <h2 className="lg:text-xl mb-2 text-center font-bold text-tabFont">swipe the cards to learn more :)</h2>
         </div>
 
       </aside>
@@ -47,7 +47,7 @@ export default function Home() {
         onTransitionEnd={() => {
           if (isDeckRendered) setIntroTransitionDone(true);
         }}
-        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[0.5%] lg:right-[3%] 2xl:right-[6%] 
+        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[1.5%] lg:right-[3%] 2xl:right-[6%] 
         ${
           introTransitionDone
             ? ''
@@ -60,18 +60,18 @@ export default function Home() {
         }`}
       >
         
-        <div className="flex flex-col 2xl:flex-row items-center justify-center">
+        <div className="flex flex-col 2xl:flex-row items-center justify-center -z-10">
 
           <LottieComponent />
 
           <div>
 
             <div className="w-[clamp(12rem, 90vw, 18rem)] flex flex-col gap-2 items-center">
-              <h1 className="text-xl mb-4 text-center font-bold text-tabFont">welcome to pet-a-pet!</h1>
-              <p className="text-tabFont text-center">an app that helps you connect with pet owners and just people who love pets in general :)</p>
-              <div>
-                <Link href={'/about'} className="text-foreground hover:border-b">learn more about it</Link>
-              </div>
+              <h2 className="lg:text-xl mb-4 text-center font-bold text-tabFont">welcome to pet-a-pet!</h2>
+              <h2 className="text-tabFont text-center text-sm lg:text-base">an app that helps you connect with pet owners and just people who love pets in general :)</h2>
+              {/* <div>
+                <Link href={'/about'} className="text-foreground hover:border-b text-sm lg:text-base">learn more about it</Link>
+              </div> */}
             </div>
 
             <div 

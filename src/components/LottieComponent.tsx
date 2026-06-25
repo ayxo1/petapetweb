@@ -6,7 +6,7 @@ const LottieComponent = () => {
 
 
   return (
-    <div className="size-[85%] xl:size-[75%] 2xl:size-[150%] z-1">
+    <div className="size-[65%] 2xl:size-[150%]">
         <Lottie 
           animationData={noBgAnim}
           loop
