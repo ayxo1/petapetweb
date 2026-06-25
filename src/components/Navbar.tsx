@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const NavBar = () => {
   return (
-    <nav className='p-4 sticky top-0 bg-background/50 z-50'>
+    <nav className='p-4 sticky top-0 bg-background/50 z-50' aria-label='main navigation'>
       <div className='flex justify-between px-[15%] w-full'>
 
         <div className='flex flex-row gap-6 relative'>
@@ -22,12 +22,6 @@ const NavBar = () => {
         </div>
 
         <div className='flex fle-row gap-6 items-center text-lg'>
-          {/* <Link 
-            href={'/about'} 
-            className='bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg'
-          >
-            about
-          </Link> */}
           <Link 
             className='truncate bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg text-center'
             href={'/privacy'}

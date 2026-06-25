@@ -1,22 +1,12 @@
 'use client';
 import { config, useSprings, animated } from "@react-spring/web";
-import ProfileCard, { ProfileCardData } from "./ProfileCard";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import ProfileCard from "./ProfileCard";
+import { useEffect, useRef, useState } from "react";
 import { useDrag } from "@use-gesture/react";
 import Image from "next/image";
-// import phoneFrameNoBg from "../../public/images/phoneFrameNoBg.png";
 import phoneFrame2 from "../../public/images/phoneFrame2.png";
 import { checkMobile } from "@/app/utils/handleMobile";
-
-
-type CardDeckProps = {
-    cards: ProfileCardData[];
-    onComplete: () => void;
-    activeIndex: number;
-    setActiveIndex: Dispatch<SetStateAction<number>>;
-    isIntroDone: boolean;
-    setIsIntroDone: Dispatch<SetStateAction<boolean>>;
-};
+import { CardDeckProps } from "@/types/cards";
 
 const stableRotation = (seed: number) => {
   const x = Math.sin(seed * 999) * 10000;
@@ -169,7 +159,7 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
                     <ProfileCard
                         id={cards[i].id}
                         imageSrc={cards[i].imageSrc}
-                        bg={cards[i].bg}
+                        name={cards[i].name}
                     >
                         {cards[i].children}
                     </ProfileCard>

@@ -67,8 +67,8 @@ export default function Home() {
           <div>
 
             <div className="w-[clamp(12rem, 90vw, 18rem)] flex flex-col gap-2 items-center">
-              <h2 className="lg:text-xl mb-4 text-center font-bold text-tabFont">welcome to pet-a-pet!</h2>
-              <h2 className="text-tabFont text-center text-sm lg:text-base">an app that helps you connect with pet owners and just people who love pets in general :)</h2>
+              <p className="lg:text-xl mb-4 text-center font-bold text-tabFont">welcome to pet-a-pet!</p>
+              <p className="text-tabFont text-center text-sm lg:text-base">an app that helps you connect with pet owners and just people who love pets in general :)</p>
               {/* <div>
                 <Link href={'/about'} className="text-foreground hover:border-b text-sm lg:text-base">learn more about it</Link>
               </div> */}

@@ -8,8 +8,9 @@ import exploreDesc from '../../public/images/exploreDesc.jpg';
 import connectDesc from '../../public/images/connectDesc.jpg';
 import eventsDesc from '../../public/images/eventsDesc.jpg';
 import rescueDesc from '../../public/images/rescueDesc.jpg';
+import { card } from "@/types/cards";
 
-const cards = [
+const cards: card[] = [
     {
         id: 0,
         children: <p>profile</p>,
@@ -55,7 +56,7 @@ const Herosection = ({ isDeckRendered, setIsDeckRendered }: { isDeckRendered: bo
     const activeBtn = cards[activeIndex].name;
     
   return (
-    <section className="relative isolate mx-auto aspect-2/3 w-[clamp(440px,42vw,550px)]">
+    <section className="relative isolate mx-auto aspect-2/3 w-[clamp(440px,42vw,550px)]" id="animated cards section">
 
         <div
             className="absolute left-[19%] top-[8%] h-[76%] w-[62%] z-20"
