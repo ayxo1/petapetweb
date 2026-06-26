@@ -56,10 +56,10 @@ const Herosection = ({ isDeckRendered, setIsDeckRendered }: { isDeckRendered: bo
     const activeBtn = cards[activeIndex].name;
     
   return (
-    <section className="relative isolate mx-auto aspect-2/3 w-[clamp(440px,42vw,550px)]" id="animated cards section">
+    <section className="relative isolate mx-auto aspect-2/3 max-w-full w-[clamp(440px,42vw,550px)]" id="animated cards section">
 
         <div
-            className="absolute left-[19%] top-[8%] h-[76%] w-[62%] z-20"
+            className="absolute left-[19%] top-[8%] h-[76%] w-[62%] z-20 scale-115 md:scale-100"
         >
             
             <div className="relative h-full w-full">

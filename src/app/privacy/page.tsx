@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -70,7 +71,7 @@ const page = () => {
           <p>We retain your personal data only as long as necessary to provide the services you requested.</p>
           <ul className="list-disc list-inside">
             <li><b>Account Deletion:</b> You can delete your account at any time directly within the App via the Profile Settings.</li>
-            <li><b>Immediate Deletion:</b> 
+            <li><b>Immediate Deletion: </b> 
               When you initiate an account deletion:
               <ul className="list-disc list-inside ml-5">
                 <li>Your user profile, personal information, and authentication credentials are deleted from our servers.</li>
@@ -103,7 +104,7 @@ const page = () => {
             </li>
             <li><b>Website:</b> 
               <address className="inline">
-                <a href='petapetapp.com'> petapetapp.com</a>
+                <Link href='/'> petapetapp.com</Link>
               </address>
             </li>
           </ul>

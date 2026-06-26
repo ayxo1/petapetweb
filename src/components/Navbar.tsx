@@ -1,11 +1,21 @@
+'use client';
 import iconHeart from '../../public/icons/iconHeart.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navLinks = [
+  { name: 'privacy policy', href: '/privacy'},
+  { name: 'terms of service', href: '/terms'}
+];
 
 const NavBar = () => {
+
+  const pathname = usePathname();
+
   return (
     <nav className='p-4 sticky top-0 bg-background/50 z-50' aria-label='main navigation'>
-      <div className='flex justify-between px-[15%] w-full'>
+      <div className='flex justify-between px-[10%] md:px-[15%] w-full'>
 
         <div className='flex flex-row gap-6 relative'>
           <Link href={'/'} className='flex flex-col gap-2 justify-center'>
@@ -22,8 +32,25 @@ const NavBar = () => {
         </div>
 
         <div className='flex fle-row gap-6 items-center text-lg'>
-          <Link 
-            className='truncate bg-lighterSecondary text-foreground border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg text-center'
+          {navLinks.map((navLink, i) => {
+            const activeLink = navLink.href === pathname || (pathname.startsWith(navLink.href) && navLink.href !== '/');
+            return (
+            <Link
+              key={i}
+              className={`truncate 
+                ${activeLink 
+                  ? 'bg-authPrimary text-background' 
+                  : 'bg-lighterSecondary text-foreground'
+                } 
+                border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg text-center`}
+              href={navLink.href}
+            >
+              {navLink.name}
+            </Link>
+            )
+          })}
+          {/* <Link 
+            className={`truncate ${pathname ? 'bg-lighterSecondary text-foreground' : ''} border border-foreground py-.5 px-2 rounded-2xl shadow hover:bg-authPrimary hover:text-background text-sm lg:text-lg text-center`}
             href={'/privacy'}
           >
             privacy policy
@@ -33,12 +60,12 @@ const NavBar = () => {
             href={'/terms'}
           >
             terms of service
-          </Link>
+          </Link> */}
         </div>
 
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

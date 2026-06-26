@@ -121,8 +121,7 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
     >
 
         {!isMobile && <Image
-            // className={`pt-9 z-10 object-contain scale-177 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone ? 'opacity-0' : 'opacity-100'}`}
-            className={`pt-9 z-10 object-contain scale-140 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone ? 'opacity-0' : 'opacity-100'}`}
+            className={`pt-9 z-10 object-contain scale-140 pointer-events-none transition-opacity duration-500 delay-600 ease-in ${!isIntroDone && !isMobile ? 'opacity-0' : 'opacity-100'}`}
             src={phoneFrame2}
             alt="phone frame image"
             priority
@@ -141,7 +140,7 @@ const CardDeck = ({ cards, onComplete, activeIndex, setActiveIndex, isIntroDone,
                 <animated.div
                     key={cards[i].id}
                     {...bind(i)}
-                    className=' scale-y-109 scale-x-98'
+                    className=' scale-y-107 scale-x-96'
                     style={{
                         position: 'absolute',
                         inset: 0,

@@ -18,7 +18,7 @@ export default function Home() {
         onTransitionEnd={() => {
             if (isDeckRendered) setIntroTransitionDone(true);
           }}
-          className={`relative flex flex-col w-fit max-w-[calc(30vw-2rem)] md:absolute md:left-[4%] lg:left-[6%] 2xl:left-[15%] 
+          className={`relative flex flex-col w-fit mb-10 md:mb-0 max-w-full md:max-w-[calc(30vw-2rem)] md:absolute md:left-[4%] lg:left-[6%] 2xl:left-[15%] 
           ${
             introTransitionDone
               ? ''
@@ -33,7 +33,7 @@ export default function Home() {
       >
 
         <div>
-          <h2 className="lg:text-xl mb-2 text-center font-bold text-tabFont">swipe the cards to learn more :)</h2>
+          <h2 className="lg:text-xl text-center font-bold text-tabFont">swipe the cards to learn more :)</h2>
         </div>
 
       </aside>
@@ -47,7 +47,7 @@ export default function Home() {
         onTransitionEnd={() => {
           if (isDeckRendered) setIntroTransitionDone(true);
         }}
-        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] md:absolute md:right-[1.5%] lg:right-[3%] 2xl:right-[6%] 
+        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] mt-4 md:mt-0 md:absolute md:right-[1.5%] lg:right-[3%] 2xl:right-[6%] 
         ${
           introTransitionDone
             ? ''
@@ -66,7 +66,7 @@ export default function Home() {
 
           <div>
 
-            <div className="w-[clamp(12rem, 90vw, 18rem)] flex flex-col gap-2 items-center">
+            <div className="md:w-[clamp(12rem, 90vw, 18rem)] flex flex-col gap-2 items-center">
               <p className="lg:text-xl mb-4 text-center font-bold text-tabFont">welcome to pet-a-pet!</p>
               <p className="text-tabFont text-center text-sm lg:text-base">an app that helps you connect with pet owners and just people who love pets in general :)</p>
               {/* <div>
