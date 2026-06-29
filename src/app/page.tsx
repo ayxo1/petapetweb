@@ -47,16 +47,16 @@ export default function Home() {
         onTransitionEnd={() => {
           if (isDeckRendered) setIntroTransitionDone(true);
         }}
-        className={`relative flex flex-col w-fit max-w-[calc(34vw-2rem)] mt-4 md:mt-0 md:absolute md:right-[1.5%] lg:right-[3%] 2xl:right-[6%] 
+        className={`relative flex flex-col w-fit max-w-[80%] md:max-w-[calc(34vw-2rem)] mt-4 md:mt-0 md:absolute md:right-[1.5%] lg:right-[3%] 2xl:right-[6%] 
         ${
           introTransitionDone
             ? ''
             : 'transition-[opacity,top] delay-500 duration-600 ease-in-out'
-        } 
+        }
         ${
           !isDeckRendered
-          ? 'opacity-0 top-[10%] md:top-[5%]' 
-          : 'opacity-100 2xl:top-[28%] lg:top-[8%] md:top-[10%]'
+            ? 'opacity-0 top-[10%] md:top-[5%]' 
+            : 'opacity-100 2xl:top-[28%] lg:top-[10%] md:top-[14%]'
         }`}
       >
         

@@ -37,7 +37,7 @@ const page = () => {
                 <h2 className="font-bold text-lg">3. User Conduct and Content (UGC)</h2>
                 <p>pet-a-pet allows users to upload profiles, pet listings, events, photos, and send messages (&quot;User-Generated Content&quot; or &quot;UGC&quot;).</p>
                 <section aria-label="prohibited content">
-                    <h3>A. h3rohibited Content</h3>
+                    <h3>A. Prohibited Content</h3>
                     <p>You agree not to post, upload, or transmit any UGC that:</p>
                     <ul className="list-disc list-inside">
                         <li>Is fraudulent, misleading, or deceptive (e.g., fake shelters, false pet information, selling illegal/restricted animals).</li>
