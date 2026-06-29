@@ -36,9 +36,9 @@ const ContactUs = () => {
     <div>
         <div className={`flex flex-col gap-12 items-center justify-center pt-[10%] ${isSuccess && 'hidden'}`}>
             {isError && 
-                <div className='flex flex-col text-center gap-4'>
-                    <p className='text-red-400 font-bold'>an error occurred</p>
-                    <p className='text-red-400'>please refresh the page and try to send a request again</p>
+                <div className='flex flex-col text-center gap-4 px-[15%]'>
+                    <p className='text-red-400 font-bold text-center'>an error occurred</p>
+                    <p className='text-red-400 text-center'>please refresh the page and try to send a request again</p>
                 </div>
             }
             <div className='flex items-center justify-center gap-4 w-full h-full'>
@@ -53,7 +53,7 @@ const ContactUs = () => {
             <div className='flex flex-col items-center justify-center gap-4 w-full h-full'>
                 <p className='text-foreground font-bold'>your message: </p>
                 <textarea 
-                    className={`p-2 border ${focus === 'message' ? 'border-authPrimary' : 'border-lighterSecondary'} rounded-lg w-[60%] md:w-[40%] h-[40%] text-foreground`}
+                    className={`p-2 border ${focus === 'message' ? 'border-authPrimary' : 'border-lighterSecondary'} rounded-lg w-[80%] md:w-[60%] h-[40%] text-foreground`}
                     value={message}
                     onChange={(val) => setMessage(val.target.value)}
                     onFocus={() => setFocus('message')}
@@ -68,11 +68,11 @@ const ContactUs = () => {
             </button>
         </div>
         
-        {isSuccess && <div className='flex flex-col gap-6 items-center justify-center pt-[10%] text-foreground'>
-            <p className='font-bold'>
+        {isSuccess && <div className='flex flex-col gap-6 items-center justify-center pt-[10%] text-foreground px-[15%]'>
+            <p className='font-bold text-center'>
                 thank you for your submission!
             </p>
-            <p>we will contact you via the email address you provided</p>
+            <p className='text-center'>we will contact you via the email address you provided</p>
         </div>}
     </div>
   );

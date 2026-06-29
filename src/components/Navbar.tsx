@@ -20,10 +20,10 @@ const NavBar = () => {
   return (
     <nav className='p-4 sticky top-0 bg-background/50 z-50' aria-label='main navigation'>
 
-      <div className='flex justify-between px-[15%] w-full'>
+      <div className='flex justify-between px-[12%] w-full'>
 
         <div className='flex flex-row gap-6 relative'>
-          <Link href={'/'} className='flex flex-col gap-2 justify-center'>
+          <Link href={'/'} className='flex flex-col gap-2 justify-center' onClick={() => setIsMenuOpen(false)}>
             <Image
               className="peer w-7/12 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-105"
               src={iconHeart}
@@ -81,6 +81,7 @@ const NavBar = () => {
                     } 
                     py-.5 px-2 hover:text-authPrimary text-center`}
                   href={navLink.href}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {navLink.name}
                 </Link>
