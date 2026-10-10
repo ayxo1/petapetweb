@@ -2,7 +2,6 @@
 import Image from "next/image";
 import AppStoreBadgeBlk from "../../public/AppStoreBadgeBlk.svg";
 import LottieComponent from "@/components/LottieComponent";
-import Link from "next/link";
 import Herosection from "@/components/Herosection";
 import { useState } from "react";
 
@@ -60,7 +59,7 @@ export default function Home() {
         }`}
       >
         
-        <div className="flex flex-col 2xl:flex-row items-center justify-center -z-10">
+        <div className="flex flex-col 2xl:flex-row items-center justify-center">
 
           <LottieComponent />
 
@@ -81,13 +80,19 @@ export default function Home() {
                   : 'opacity-100'
               }`}
             >
-              <Image
-                src={AppStoreBadgeBlk}
-                alt="app icon"
-                width={150}
-                height={150}
-                priority
-              />
+              <a
+                href="https://apps.apple.com/us/app/pet-a-pet/id6765866159"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={AppStoreBadgeBlk}
+                  alt="Download on the App Store"
+                  width={150}
+                  height={150}
+                  priority
+                />
+              </a>
             </div>
             
           </div>
